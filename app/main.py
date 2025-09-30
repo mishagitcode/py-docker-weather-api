@@ -1,8 +1,6 @@
 import os
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
 API_URL = "https://api.weatherapi.com/v1/current.json"
 DEFAULT_CITY = "Paris"
 
