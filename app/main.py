@@ -39,7 +39,8 @@ def get_weather(city: str = "Paris") -> None:
     temp_c = current.get("temp_c", "N/A")
     condition = current.get("condition", {}).get("text", "N/A")
 
-    print(f"{city_name}/{country} {localtime} Weather: {temp_c} Celsius, {condition}")
+    print(f"{city_name}/{country} {localtime} "
+          f"Weather: {temp_c} Celsius, {condition}")
 
 
 if __name__ == "__main__":
