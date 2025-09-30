@@ -2,16 +2,18 @@ import os
 import requests
 from dotenv import load_dotenv
 
+load_dotenv()
+API_URL = "https://api.weatherapi.com/v1/current.json"
+DEFAULT_CITY = "Paris"
 
-def get_weather(city: str = "Paris") -> None:
-    load_dotenv()
+
+def get_weather(city: str = DEFAULT_CITY) -> None:
     api_key = os.getenv("API_KEY")
 
     if not api_key:
-        print("No API_KEY found in .env")
+        print("No API_KEY set in environment")
         return
 
-    url = "https://api.weatherapi.com/v1/current.json"
     params = {
         "key": api_key,
         "q": city,
@@ -21,7 +23,7 @@ def get_weather(city: str = "Paris") -> None:
     print(f"Performing request to Weather API for the city {city}...")
 
     try:
-        response = requests.get(url, params=params, timeout=10)
+        response = requests.get(API_URL, params=params, timeout=10)
         response.raise_for_status()
     except requests.RequestException as e:
         print(f"Request failed: {e}")
